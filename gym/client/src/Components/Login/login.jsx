@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import api from '../../axios'
 import {toast,ToastContainer} from 'react-toastify';
 
 const Login = () => {
@@ -11,7 +12,7 @@ const Login = () => {
         // sessionStorage.setItem("isLogin",true)
         
 
-        await axios.post('/auth/login',loginField,{withCredentials:true}).then((resp)=>{
+        await api.post('/auth/login',loginField,{withCredentials:true}).then((resp)=>{
             console.log(resp.data);
            localStorage.setItem('gymName',resp.data.gym.gymName);
            localStorage.setItem('gymPic',resp.data.gym.profilePic);
