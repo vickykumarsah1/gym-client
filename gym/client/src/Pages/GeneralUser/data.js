@@ -1,8 +1,8 @@
 import axios from "axios";
-
+import api from '../../axios';
 const getMonthlyJoined = async () => {
     try{
-        const response = await axios.get('/members/monthly-member',{withCredentials:true});
+        const response = await api.get('/members/monthly-member',{withCredentials:true});
         console.log(response);
         return response.data;
     } catch(error){
@@ -14,7 +14,7 @@ const getMonthlyJoined = async () => {
 const threeDayExpire = async () => {
       try{
         console.log("3 days")
-        const response = await axios.get('/members/within-3-days-expiring',{withCredentials:true});
+        const response = await api.get('/members/within-3-days-expiring',{withCredentials:true});
         console.log(response)
         return response.data;
     } catch(error){
@@ -27,7 +27,7 @@ const threeDayExpire = async () => {
 
 const fourToSevenDaysExpire = async () => {
      try{
-        const response = await axios.get('/members/within-4-7-expiring',{withCredentials:true});
+        const response = await api.get('/members/within-4-7-expiring',{withCredentials:true});
         return response.data;
     } catch(error){
         console.error('Error fetching data:', error);
@@ -38,7 +38,7 @@ const fourToSevenDaysExpire = async () => {
 
 const expired = async () => {
    try{
-        const response = await axios.get('/members/expired-member',{withCredentials:true});
+        const response = await api.get('/members/expired-member',{withCredentials:true});
         return response.data;
     } catch(error){
         console.error('Error fetching data:', error);
@@ -47,7 +47,7 @@ const expired = async () => {
 }
 const inActiveMembers = async () => {
     try{
-        const response = await axios.get('/members/inactive-member',{withCredentials:true});
+        const response = await api.get('/members/inactive-member',{withCredentials:true});
         return response.data;
     } catch(error){
         console.error('Error fetching data:', error);
