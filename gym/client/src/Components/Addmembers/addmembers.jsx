@@ -45,7 +45,7 @@ const Addmembers = () => {
   }
 
   const fetchMembership = async()=>{
-    await axios.get('https://gym-management-two-eta.vercel.app/plans/get-membership',{withCredentials:true}).then((response)=>{
+    await axios.get('/plans/get-membership',{withCredentials:true}).then((response)=>{
 
       setMembershipList(response.data.membership);
       if(response.data.membership.length===0){
@@ -86,7 +86,7 @@ const Addmembers = () => {
 
   try {
     const res = await axios.post(
-      'https://gym-management-two-eta.vercel.app/members/register-member',
+      '/members/register-member',
       inputField,
       { withCredentials: true }
     );
