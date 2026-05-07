@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import axios from 'axios';
-
+import api from '../../axios'
 import Stack from '@mui/material/Stack';
 import LinearProgress from '@mui/material/LinearProgress';
 import { ToastContainer,toast } from 'react-toastify';
@@ -28,7 +28,7 @@ const Addmembers = () => {
     data.append('upload_preset', 'gym-management');
 
     try {
-      const response = await axios.post("https://api.cloudinary.com/v1_1/mashhuudanny/image/upload", data);
+      const response = await api.post("https://api.cloudinary.com/v1_1/mashhuudanny/image/upload", data);
       console.log(response)
       const imageUrl = response.data.url;
       setInputField({ ...inputField, ['profilePic']: imageUrl })
@@ -45,7 +45,7 @@ const Addmembers = () => {
   }
 
   const fetchMembership = async()=>{
-    await axios.get('/plans/get-membership',{withCredentials:true}).then((response)=>{
+    await api.get('/plans/get-membership',{withCredentials:true}).then((response)=>{
 
       setMembershipList(response.data.membership);
       if(response.data.membership.length===0){
