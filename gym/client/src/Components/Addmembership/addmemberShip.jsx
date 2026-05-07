@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import api from '../../axios'
 import {toast,ToastContainer} from 'react-toastify';
 const AddmemberShip = ({handleClose}) => {
 
@@ -30,7 +31,7 @@ const AddmemberShip = ({handleClose}) => {
     }, [])
 
     const handleAddmembership = async()=>{
-         await axios.post('/plans/add-membership',inputField,{withCredentials:true}).then((response)=>{
+         await api.post('/plans/add-membership',inputField,{withCredentials:true}).then((response)=>{
             toast.success(response.data.message);
             handleClose();
         }).catch(err=>{
