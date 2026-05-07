@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './signUp.css';
 import Modal from '../Modal/modal';
+import api from '../../axios'
 import ForgotPassword from '../ForgotPassword/forgotPassword';
 import axios from 'axios';
 import Stack from '@mui/material/Stack';
@@ -43,7 +44,7 @@ const SignUp = () => {
     }
 };
     const handleRegister = async()=>{
-        await axios.post('/auth/register',inputField).then((resp)=>{
+        await api.post('/auth/register',inputField).then((resp)=>{
             const successMsg = resp.data.message;
             toast.success(successMsg);
         }).catch(err=>{
