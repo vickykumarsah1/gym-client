@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate,useParams } from 'react-router-dom';
 import Switch from 'react-switch';
+import api from '../../axios';
 import axios from 'axios';
 import { ToastContainer,toast } from 'react-toastify';
 
@@ -20,7 +21,7 @@ const MemberDetail = () => {
     },[])
 
     const fetchMembership= async()=>{
-         await axios.get('/plans/get-membership/',{withCredentials:true}).then((response)=>{
+         await api.get('/plans/get-membership/',{withCredentials:true}).then((response)=>{
 
             
             setMembership(response.data.membership);
@@ -35,7 +36,7 @@ const MemberDetail = () => {
     }
 
     const fetchData=async()=>{
-        await axios.get(`/members/get-member/${id}`,{withCredentials:true}).then((response)=>{
+        await api.get(`/members/get-member/${id}`,{withCredentials:true}).then((response)=>{
             console.log(response);
             setData(response.data.member);
             setStatus(response.data.member.status);
@@ -50,7 +51,7 @@ const MemberDetail = () => {
 
     const handleSwitchBtn = async() => {
         let statuss = status === "Active"?"Pending":"Active";
-        await axios.post(`/members/change-status/${id}`,{status:status},{withCredentials:true}).then((response)=>{
+        await api.post(`/members/change-status/${id}`,{status:status},{withCredentials:true}).then((response)=>{
             
             toast.success("Status Changed");
 
@@ -74,7 +75,7 @@ const MemberDetail = () => {
         setPlanMember(value);
     }
     const handleRenewSaveBtn = async()=>{
-        await axios.put(`/members/update-member-plan/${id}`,{membership:planMember},{withCredentials:true}).then((response)=>{
+        await api.put(`/members/update-member-plan/${id}`,{membership:planMember},{withCredentials:true}).then((response)=>{
             setData(response.data.member);
             toast.success(response.data.message);
 
