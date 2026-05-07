@@ -37,7 +37,7 @@ const Member = () => {
 
     const fetchData = async (skip, limits) => {
 
-        await axios.get(`https://gym-management-two-eta.vercel.app/members/all-member?skip=${skip}&limit=${limits}`, { withCredentials: true }).then((response) => {
+        await axios.get(`/all-member?skip=${skip}&limit=${limits}`, { withCredentials: true }).then((response) => {
             console.log(response);
             let total = response.data.totalMembers;
             setTotalData(total);
@@ -110,7 +110,7 @@ const Member = () => {
     const handleSearchData = async () => {
         if(search!==""){
             setIsSearchModeOn(true);
-            await axios.get(`https://gym-management-two-eta.vercel.app/members/searched-members?searchTerm=${search}`,{withCredentials:true}).then((response)=>{
+            await axios.get(`/members/searched-members?searchTerm=${search}`,{withCredentials:true}).then((response)=>{
                 console.log(response);
                 setData(response.data.members);
                 setTotalData(response.data.totalMembers)
