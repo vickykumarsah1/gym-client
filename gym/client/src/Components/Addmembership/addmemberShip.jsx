@@ -13,7 +13,7 @@ const AddmemberShip = ({handleClose}) => {
     }
 
     const fetchMembership = async () => {
-        await axios.get('/plans/get-membership', {
+        await api.get('/plans/get-membership', {
     withCredentials: true
 }).then((res)=>{
             console.log(res);
