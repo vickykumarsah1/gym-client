@@ -12,7 +12,7 @@ const AddmemberShip = ({handleClose}) => {
     }
 
     const fetchMembership = async () => {
-        await axios.get('https://gym-management-two-eta.vercel.app/plans/get-membership', {
+        await axios.get('/plans/get-membership', {
     withCredentials: true
 }).then((res)=>{
             console.log(res);
@@ -30,7 +30,7 @@ const AddmemberShip = ({handleClose}) => {
     }, [])
 
     const handleAddmembership = async()=>{
-         await axios.post('https://gym-management-two-eta.vercel.app/plans/add-membership',inputField,{withCredentials:true}).then((response)=>{
+         await axios.post('/plans/add-membership',inputField,{withCredentials:true}).then((response)=>{
             toast.success(response.data.message);
             handleClose();
         }).catch(err=>{
