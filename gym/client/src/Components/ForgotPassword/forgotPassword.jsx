@@ -26,7 +26,7 @@ const ForgotPassword = () => {
 
     const changePassword = async()=>{
         setLoader(true)
-        await axios.post('https://gym-management-two-eta.vercel.app/auth/reset-password',{email:inputField.email,newPassword:inputField.newPassword}).then((response)=>{
+        await axios.post('/auth/reset-password',{email:inputField.email,newPassword:inputField.newPassword}).then((response)=>{
             toast.success(response.data.message);
             setLoader(false);
 
