@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import AddIcon from '@mui/icons-material/Add';
 import { Link } from 'react-router-dom';
+import api from '../../axios';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -37,7 +38,7 @@ const Member = () => {
 
     const fetchData = async (skip, limits) => {
 
-        await axios.get(`/all-member?skip=${skip}&limit=${limits}`, { withCredentials: true }).then((response) => {
+        await api.get(`/all-member?skip=${skip}&limit=${limits}`, { withCredentials: true }).then((response) => {
             console.log(response);
             let total = response.data.totalMembers;
             setTotalData(total);
@@ -110,7 +111,7 @@ const Member = () => {
     const handleSearchData = async () => {
         if(search!==""){
             setIsSearchModeOn(true);
-            await axios.get(`/members/searched-members?searchTerm=${search}`,{withCredentials:true}).then((response)=>{
+            await api.get(`/members/searched-members?searchTerm=${search}`,{withCredentials:true}).then((response)=>{
                 console.log(response);
                 setData(response.data.members);
                 setTotalData(response.data.totalMembers)
