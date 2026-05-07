@@ -20,7 +20,7 @@ const MemberDetail = () => {
     },[])
 
     const fetchMembership= async()=>{
-         await axios.get('https://gym-management-two-eta.vercel.app/plans/get-membership/',{withCredentials:true}).then((response)=>{
+         await axios.get('/plans/get-membership/',{withCredentials:true}).then((response)=>{
 
             
             setMembership(response.data.membership);
@@ -35,7 +35,7 @@ const MemberDetail = () => {
     }
 
     const fetchData=async()=>{
-        await axios.get(`https://gym-management-two-eta.vercel.app/members/get-member/${id}`,{withCredentials:true}).then((response)=>{
+        await axios.get(`/members/get-member/${id}`,{withCredentials:true}).then((response)=>{
             console.log(response);
             setData(response.data.member);
             setStatus(response.data.member.status);
@@ -50,7 +50,7 @@ const MemberDetail = () => {
 
     const handleSwitchBtn = async() => {
         let statuss = status === "Active"?"Pending":"Active";
-        await axios.post(`https://gym-management-two-eta.vercel.app/members/change-status/${id}`,{status:status},{withCredentials:true}).then((response)=>{
+        await axios.post(`/members/change-status/${id}`,{status:status},{withCredentials:true}).then((response)=>{
             
             toast.success("Status Changed");
 
@@ -74,7 +74,7 @@ const MemberDetail = () => {
         setPlanMember(value);
     }
     const handleRenewSaveBtn = async()=>{
-        await axios.put(`https://gym-management-two-eta.vercel.app/members/update-member-plan/${id}`,{membership:planMember},{withCredentials:true}).then((response)=>{
+        await axios.put(`/members/update-member-plan/${id}`,{membership:planMember},{withCredentials:true}).then((response)=>{
             setData(response.data.member);
             toast.success(response.data.message);
 
