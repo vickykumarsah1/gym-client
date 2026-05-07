@@ -43,7 +43,7 @@ const SignUp = () => {
     }
 };
     const handleRegister = async()=>{
-        await axios.post('https://gym-management-two-eta.vercel.app/auth/register',inputField).then((resp)=>{
+        await axios.post('/auth/register',inputField).then((resp)=>{
             const successMsg = resp.data.message;
             toast.success(successMsg);
         }).catch(err=>{
