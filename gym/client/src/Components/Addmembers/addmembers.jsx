@@ -85,7 +85,7 @@ const Addmembers = () => {
   }
 
   try {
-    const res = await axios.post(
+    const res = await api.post(
       '/members/register-member',
       inputField,
       { withCredentials: true }
