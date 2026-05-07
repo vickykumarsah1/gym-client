@@ -11,7 +11,7 @@ const Login = () => {
         // sessionStorage.setItem("isLogin",true)
         
 
-        await axios.post('https://gym-management-two-eta.vercel.app/auth/login',loginField,{withCredentials:true}).then((resp)=>{
+        await axios.post('/auth/login',loginField,{withCredentials:true}).then((resp)=>{
             console.log(resp.data);
            localStorage.setItem('gymName',resp.data.gym.gymName);
            localStorage.setItem('gymPic',resp.data.gym.profilePic);
