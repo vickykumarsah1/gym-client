@@ -38,7 +38,7 @@ const Member = () => {
 
     const fetchData = async (skip, limits) => {
 
-        await api.get(`/all-member?skip=${skip}&limit=${limits}`, { withCredentials: true }).then((response) => {
+        await api.get(`/members/all-member?skip=${skip}&limit=${limits}`, { withCredentials: true }).then((response) => {
             console.log(response);
             let total = response.data.totalMembers;
             setTotalData(total);
